@@ -15,6 +15,10 @@ local M = {
       ensure_installed = { "lua", "vim", "go", "ruby" }
     }
   },
+  ["nvim-treesitter/nvim-treesitter-textobjects"] = {
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+  },
   ["folke/tokyonight.nvim"] = {},
 }
 

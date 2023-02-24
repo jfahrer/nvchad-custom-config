@@ -24,6 +24,8 @@ end
 M.disabled = {
   n = {
     ["<leader>q"] = "",
+    ["<leader>n"] = "",
+    ["<leader>rn"] = "",
     ["<leader>x"] = "",
     ["<leader>wk"] = "",
     ["<leader>wK"] = "",
@@ -32,6 +34,8 @@ M.disabled = {
     ["<leader>wr"] = "",
     ["<C-c>"] = "",
     ["<C-s>"] = "",
+    ["]c"] = "",
+    ["[c"] = "",
   }
 }
 
@@ -83,16 +87,22 @@ M.general = {
     ["<C-l>"] = { "<CMD>NavigatorRight<CR>", "window right"},
 
     ["<C-c>"] = { "<CMD>nohlsearch<CR>", "Clear search highlight"},
-
-    -- These don't work when repeating or counting
-    ["[ "] = { "m'O<ESC>`'", "Add empty line above"},
-    ["] "] = { "m'o<ESC>`'", "Add empty line above"},
   }
 }
 
 M.oil = {
   n = {
     ["-"] = { require("oil").open, "Open parent directory"}
+  }
+}
+
+M.pairs = {
+  n = {
+    -- These don't work when repeating or counting
+    ["[ "] = { "m'O<ESC>`'", "Add empty line above"},
+    ["] "] = { "m'o<ESC>`'", "Add empty line above"},
+    ["[e"] = { "<CMD> cnext<CR>"},
+    ["]e"] = { "<CMD> cprevious<CR>"},
   }
 }
 
@@ -104,6 +114,29 @@ M.telescope = {
       function()
         vim.cmd("Telescope live_grep default_text=" .. vim.fn.expand("<cword>"))
       end, "live grep current word", opts = { nowait = true }},
+  }
+}
+
+M.toggles = {
+  n = {
+    ["<leader>tn"] = { "<CMD> set number!<CR>", "toggle line number"},
+    ["<leader>tr"] = { "<CMD> set relativenumber!<CR>", "toggle relative number"},
+    ["<leader>tt"] = {
+      function()
+        require("base46").toggle_theme()
+      end,
+      "toggle theme"
+    },
+  }
+}
+
+M.copying = {
+  n = {
+    ["<leader>c"] = { '"+y', "copy to clipboard"},
+    ["<leader>C"] = { "<CMD>%y+ <CR>", "copy buffer to clipboard"},
+  },
+  v = {
+    ["<leader>c"] = { '"+y', "copy to clipboard"},
   }
 }
 
