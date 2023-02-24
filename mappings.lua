@@ -98,7 +98,12 @@ M.oil = {
 
 M.telescope = {
   n = {
-    ["<leader><leader>"] = { "<CMD> Telescope find_files<CR>", "find files", opts = { nowait = true }}
+    ["<leader><leader>"] = { "<CMD> Telescope find_files<CR>", "find files"},
+    ["<leader>fF"] = { "<CMD> Telescope find_files no_ignore=true hidden=true<CR>", "find files including gitignored"},
+    ["<leader>fW"] = {
+      function()
+        vim.cmd("Telescope live_grep default_text=" .. vim.fn.expand("<cword>"))
+      end, "live grep current word", opts = { nowait = true }},
   }
 }
 

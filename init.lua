@@ -5,3 +5,4 @@ require('mini.bracketed').setup()
 
 vim.opt.mouse = ""
 vim.opt.clipboard = ""
+vim.opt.relativenumber = true
