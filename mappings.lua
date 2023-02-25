@@ -53,17 +53,6 @@ M.general = {
     ["s"] = { "<CMD> write<CR>", "Write current buffer", opts = { nowait = true }},
     ["S"] = { "<CMD> wall<CR>", "Write all buffers"},
 
-    ["q"] = {
-      function()
-        if vim.fn.reg_recording() == "" then
-          require("nvchad_ui.tabufline").close_buffer()
-        else
-          vim.cmd 'normal 1 q'
-        end
-      end,
-      "close buffer"
-    },
-    ["Q"] = { "<CMD> close<CR>", "Close window"},
 
     ["<leader>q"] = { "q", "Record macro", opts = { nowait = true }},
     ["<leader>Q"] = { "qqqqq", "Record recursive macro in q", opts = { nowait = true }},
@@ -81,13 +70,49 @@ M.general = {
       "Toggle quickfix"
     },
 
+    ["<C-c>"] = { "<CMD>nohlsearch<CR>", "Clear search highlight"},
+  }
+}
+
+M.buffer_and_window_management = {
+  n = {
     ["<C-h>"] = { "<CMD>NavigatorLeft<CR>", "window left"},
     ["<C-j>"] = { "<CMD>NavigatorDown<CR>", "window down"},
     ["<C-k>"] = { "<CMD>NavigatorUp<CR>", "window up"},
     ["<C-l>"] = { "<CMD>NavigatorRight<CR>", "window right"},
 
-    ["<C-c>"] = { "<CMD>nohlsearch<CR>", "Clear search highlight"},
-  }
+    ["q"] = {
+      function()
+        if vim.fn.reg_recording() == "" then
+          require("nvchad_ui.tabufline").close_buffer()
+        else
+          vim.cmd 'normal 1 q'
+        end
+      end,
+      "close buffer"
+    },
+    ["Q"] = { "<CMD> close<CR>", "Close window"},
+
+    ["<leader>o"] = {
+      function()
+        require("nvchad_ui.tabufline").closeOtherBufs()
+        vim.cmd("AV")
+      end,
+      "Vertical split for test and impl"
+    },
+    [";v"] = {
+      function()
+        vim.cmd("AV")
+      end,
+      "Vertical split for test and impl"
+    },
+    [";a"] = {
+      function()
+        vim.cmd("A")
+      end,
+      "Alternate file"
+    },
+  },
 }
 
 M.oil = {
