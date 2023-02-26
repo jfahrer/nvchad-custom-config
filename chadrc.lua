@@ -11,4 +11,6 @@ M.mappings = mappings
 
 M.plugins = require("custom/plugins")
 
+require("custom/vim-test")
+
 return M

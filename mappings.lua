@@ -4,25 +4,33 @@ local function unlearn()
   vim.notify("WRONG DUDE!!!")
 end
 
-local function count_buffers()
-  local buffers = {}
-  local len = 0
-  local vim_fn = vim.fn
-  local buflisted = vim_fn.buflisted
-
-  for buffer = 1, vim_fn.bufnr('$') do
-    if buflisted(buffer) ~= 1 then
-      len = len + 1
-      buffers[len] = buffer
-    end
-  end
-
-  return buffers.len
+local function termcodes(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
+
+-- local function count_buffers()
+--   local buffers = {}
+--   local len = 0
+--   local vim_fn = vim.fn
+--   local buflisted = vim_fn.buflisted
+--
+--   for buffer = 1, vim_fn.bufnr('$') do
+--     if buflisted(buffer) ~= 1 then
+--       len = len + 1
+--       buffers[len] = buffer
+--     end
+--   end
+--
+--   return buffers.len
+-- end
 
 
 M.disabled = {
   n = {
+    ["<leader>tt"] = "",
+    ["<leader>tk"] = "",
+    ["<leader>th"] = "",
+    ["<leader>td"] = "",
     ["<leader>q"] = "",
     ["<leader>n"] = "",
     ["<leader>rn"] = "",
@@ -59,13 +67,12 @@ M.general = {
 
     ["<C-q>"] = {
       function()
-        local number_of_buffers = count_buffers()
         vim.cmd("copen")
-
-        if count_buffers() == number_of_buffers then
-          -- This doesn't currently work
-          -- vim.cmd("cclose")
-        end
+        -- local number_of_buffers = count_buffers()
+        -- if count_buffers() == number_of_buffers then
+        --   -- This doesn't currently work
+        --   -- vim.cmd("cclose")
+        -- end
       end,
       "Toggle quickfix"
     },
@@ -80,6 +87,8 @@ M.buffer_and_window_management = {
     ["<C-j>"] = { "<CMD>NavigatorDown<CR>", "window down"},
     ["<C-k>"] = { "<CMD>NavigatorUp<CR>", "window up"},
     ["<C-l>"] = { "<CMD>NavigatorRight<CR>", "window right"},
+
+    ["<leader>j"] = { "<C-w>j", "Jump to next window" },
 
     ["q"] = {
       function()
@@ -100,9 +109,30 @@ M.buffer_and_window_management = {
       end,
       "Vertical split for test and impl"
     },
+
+    ["<leader>O"] = {
+      function()
+        require("nvchad_ui.tabufline").closeOtherBufs()
+      end,
+      "Close all other buffers and windows"
+    },
+
+    [";o"] = {
+      function()
+        require("nvchad_ui.tabufline").closeOtherBufs()
+      end,
+      "Close all other buffers and windows"
+    },
+
     [";v"] = {
       function()
-        vim.cmd("AV")
+        vim.cmd("vsplit")
+      end,
+      "Vertical split for test and impl"
+    },
+    [";s"] = {
+      function()
+        vim.cmd("split")
       end,
       "Vertical split for test and impl"
     },
@@ -112,7 +142,65 @@ M.buffer_and_window_management = {
       end,
       "Alternate file"
     },
+
+    -- Resizing of windows
+    ["<Leader><Up>"] = {
+      function()
+        vim.api.nvim_win_set_height(0, math.floor(vim.fn.winheight(0) * 3/2))
+      end,
+      "Increase window height"
+    },
+    ["<Leader><Down>"] = {
+      function()
+        vim.api.nvim_win_set_height(0, math.floor(vim.fn.winheight(0) * 2/3))
+      end,
+      "Decrease window height"
+    },
+    ["<Leader><Right>"] = {
+      function()
+        vim.api.nvim_win_set_width(0, math.floor(vim.fn.winwidth(0) * 3/2))
+      end,
+      "Increase window width"
+    },
+    ["<Leader><Left>"] = {
+      function()
+        vim.api.nvim_win_set_width(0, math.floor(vim.fn.winwidth(0) * 2/3))
+      end,
+      "Decrease window width"
+    },
+    [";z"] = { "<C-w>_", "Zoom window" },
+    [";b"] = { "<C-w>=", "Balance windows" },
   },
+
+  t = {
+    ["jk"] = { termcodes "<C-\\><C-N>", "escape terminal mode" },
+    -- TODO: These should put the size of the window back into what it was before
+    ["<C-h>"] = { "<CMD>NavigatorLeft<CR>", "window left"},
+    ["<C-j>"] = { "<CMD>NavigatorDown<CR>", "window down"},
+    ["<C-k>"] = { "<CMD>NavigatorUp<CR>", "window up"},
+    ["<C-l>"] = { "<CMD>NavigatorRight<CR>", "window right"},
+  },
+}
+
+M.test = {
+  n = {
+    ["<leader>T"] = {
+      "<CMD> TestFile<CR>",
+      "Test current file"
+    },
+    ["<leader>F"] = {
+      "<CMD> TestAll",
+      "All tests"
+    },
+    ["<leader>t"] = {
+      "<CMD> TestNearest<CR>",
+      "All tests"
+    },
+    ["<leader>l"] = {
+      "<CMD> TestLast<CR>",
+      "Re-run last test"
+    },
+  }
 }
 
 M.oil = {
@@ -138,19 +226,27 @@ M.telescope = {
     ["<leader>fW"] = {
       function()
         vim.cmd("Telescope live_grep default_text=" .. vim.fn.expand("<cword>"))
-      end, "live grep current word", opts = { nowait = true }},
+      end, "live grep current word"
+    },
+    ["<leader>fk"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
   }
 }
 
 M.toggles = {
   n = {
-    ["<leader>tn"] = { "<CMD> set number!<CR>", "toggle line number"},
-    ["<leader>tr"] = { "<CMD> set relativenumber!<CR>", "toggle relative number"},
-    ["<leader>tt"] = {
+    [";tn"] = { "<CMD> set number!<CR>", "toggle line number"},
+    [";tr"] = { "<CMD> set relativenumber!<CR>", "toggle relative number"},
+    [";tt"] = {
       function()
         require("base46").toggle_theme()
       end,
       "toggle theme"
+    },
+    [";td"] = {
+      function()
+        require("gitsigns").toggle_deleted()
+      end,
+      "Toggle deleted",
     },
   }
 }
@@ -164,5 +260,6 @@ M.copying = {
     ["<leader>c"] = { '"+y', "copy to clipboard"},
   }
 }
+
 
 return M

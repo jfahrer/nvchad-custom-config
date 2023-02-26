@@ -19,7 +19,8 @@ local M = {
     after = "nvim-treesitter",
     requires = "nvim-treesitter/nvim-treesitter",
   },
-  ["folke/tokyonight.nvim"] = {},
+
+  ["vim-test/vim-test"] = {},
 }
 
 return M
