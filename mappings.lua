@@ -1,9 +1,5 @@
 local M = {}
 
-local function unlearn()
-  vim.notify("WRONG DUDE!!!")
-end
-
 local function termcodes(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -47,18 +43,12 @@ M.disabled = {
   }
 }
 
-M.unlearn = {
-  n = {
-    ["<leader>w"] = { unlearn, "unlearn!"}
-  }
-}
-
 M.general = {
   i = {
     ["jk"] = { "<ESC>", "escape insert mode" , opts = { nowait = true }}
   },
   n = {
-    ["s"] = { "<CMD> write<CR>", "Write current buffer", opts = { nowait = true }},
+    ["s"] = { "<CMD> write<CR>", "Write current buffer"},
     ["S"] = { "<CMD> wall<CR>", "Write all buffers"},
 
 
@@ -104,6 +94,7 @@ M.buffer_and_window_management = {
 
     ["<leader>o"] = {
       function()
+        vim.cmd("only")
         require("nvchad_ui.tabufline").closeOtherBufs()
         vim.cmd("AV")
       end,
@@ -112,31 +103,26 @@ M.buffer_and_window_management = {
 
     ["<leader>O"] = {
       function()
+        vim.cmd("only")
         require("nvchad_ui.tabufline").closeOtherBufs()
       end,
       "Close all other buffers and windows"
     },
 
-    [";o"] = {
-      function()
-        require("nvchad_ui.tabufline").closeOtherBufs()
-      end,
-      "Close all other buffers and windows"
-    },
+    -- [";v"] = {
+    --   function()
+    --     vim.cmd("vsplit")
+    --   end,
+    --   "Vertical split"
+    -- },
+    -- [";h"] = {
+    --   function()
+    --     vim.cmd("split")
+    --   end,
+    --   "Horizontal split"
+    -- },
 
-    [";v"] = {
-      function()
-        vim.cmd("vsplit")
-      end,
-      "Vertical split for test and impl"
-    },
-    [";s"] = {
-      function()
-        vim.cmd("split")
-      end,
-      "Vertical split for test and impl"
-    },
-    [";a"] = {
+    ["<leader>a"] = {
       function()
         vim.cmd("A")
       end,
@@ -168,11 +154,12 @@ M.buffer_and_window_management = {
       end,
       "Decrease window width"
     },
-    [";z"] = { "<C-w>_", "Zoom window" },
-    [";b"] = { "<C-w>=", "Balance windows" },
+    ["<leader>z"] = { "<C-w>_", "Zoom window" },
+    ["<leader>b"] = { "<C-w>=", "Balance windows" },
   },
 
   t = {
+    ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" },
     ["jk"] = { termcodes "<C-\\><C-N>", "escape terminal mode" },
     -- TODO: These should put the size of the window back into what it was before
     ["<C-h>"] = { "<CMD>NavigatorLeft<CR>", "window left"},
@@ -184,22 +171,26 @@ M.buffer_and_window_management = {
 
 M.test = {
   n = {
-    ["<leader>T"] = {
-      "<CMD> TestFile<CR>",
-      "Test current file"
-    },
-    ["<leader>F"] = {
+    [";s"] = {
       "<CMD> TestAll",
-      "All tests"
+      "All suite"
     },
-    ["<leader>t"] = {
+    [";f"] = {
+      "<CMD> TestFile<CR>",
+      "Test file"
+    },
+    [";l"] = {
       "<CMD> TestNearest<CR>",
-      "All tests"
+      "Test nearest to curser"
     },
-    ["<leader>l"] = {
+    [";;"] = {
       "<CMD> TestLast<CR>",
       "Re-run last test"
     },
+    [";g"] = {
+      "<CMD> TestVisit<CR>",
+      "Visit last run test"
+    }
   }
 }
 
@@ -209,7 +200,7 @@ M.oil = {
   }
 }
 
-M.pairs = {
+M.bracketed = {
   n = {
     -- These don't work when repeating or counting
     ["[ "] = { "m'O<ESC>`'", "Add empty line above"},
@@ -234,15 +225,15 @@ M.telescope = {
 
 M.toggles = {
   n = {
-    [";tn"] = { "<CMD> set number!<CR>", "toggle line number"},
-    [";tr"] = { "<CMD> set relativenumber!<CR>", "toggle relative number"},
-    [";tt"] = {
+    ["<leader>tn"] = { "<CMD> set number!<CR>", "toggle line number"},
+    ["<leader>tr"] = { "<CMD> set relativenumber!<CR>", "toggle relative number"},
+    ["<leader>tt"] = {
       function()
         require("base46").toggle_theme()
       end,
       "toggle theme"
     },
-    [";td"] = {
+    ["<leader>td"] = {
       function()
         require("gitsigns").toggle_deleted()
       end,
