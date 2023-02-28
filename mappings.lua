@@ -154,8 +154,8 @@ M.buffer_and_window_management = {
       end,
       "Decrease window width"
     },
-    ["<leader>z"] = { "<C-w>_", "Zoom window" },
-    ["<leader>b"] = { "<C-w>=", "Balance windows" },
+    ["<leader>z"] = { "<C-w>_<C-w>|", "Zoom window" },
+    ["<leader>Z"] = { "<C-w>=", "Balance windows" },
   },
 
   t = {

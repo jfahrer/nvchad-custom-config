@@ -19,6 +19,8 @@ local M = {
     after = "nvim-treesitter",
     requires = "nvim-treesitter/nvim-treesitter",
   },
+  ["nvim-telescope/telescope.nvim"] = { override_options = { extensions_list = { "fzf", "terms" }}},
+  ["nvim-telescope/telescope-fzf-native.nvim"] = { run = "make" },
 
   ["vim-test/vim-test"] = {},
 }
