@@ -12,10 +12,15 @@ local M = {
 
   ["nvim-treesitter/nvim-treesitter"] = {
     override_options = {
-      ensure_installed = { "lua", "vim", "go", "ruby" }
+      ensure_installed = { "lua", "vim", "go", "ruby" },
+      endwise = { enable = true }
     }
   },
   ["nvim-treesitter/nvim-treesitter-textobjects"] = {
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+  },
+  ["RRethy/nvim-treesitter-endwise"] = {
     after = "nvim-treesitter",
     requires = "nvim-treesitter/nvim-treesitter",
   },
@@ -23,6 +28,15 @@ local M = {
   ["nvim-telescope/telescope-fzf-native.nvim"] = { run = "make" },
 
   ["vim-test/vim-test"] = {},
+
+  ["neovim/nvim-lspconfig"] = {
+    override_options = {
+      config = function()
+        require "plugins.configs.lspconfig"
+        require "custom.configs.lspconfig"
+      end,
+    }
+  },
 }
 
 return M
