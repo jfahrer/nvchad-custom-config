@@ -179,7 +179,7 @@ M.test = {
       "<CMD> TestFile<CR>",
       "Test file"
     },
-    [";l"] = {
+    [";d"] = {
       "<CMD> TestNearest<CR>",
       "Test nearest to curser"
     },
@@ -205,8 +205,8 @@ M.bracketed = {
     -- These don't work when repeating or counting
     ["[ "] = { "m'O<ESC>`'", "Add empty line above"},
     ["] "] = { "m'o<ESC>`'", "Add empty line above"},
-    ["[e"] = { "<CMD> cnext<CR>"},
-    ["]e"] = { "<CMD> cprevious<CR>"},
+    ["[e"] = { "<CMD> cnewer<CR>"},
+    ["]e"] = { "<CMD> colder<CR>"},
   }
 }
 
