@@ -6,10 +6,10 @@ M.ui = {
   theme = "one_light",
 }
 
+M.plugins = require("custom/plugins")
+
 local mappings = require("custom/mappings")
 M.mappings = mappings
-
-M.plugins = require("custom/plugins")
 
 require("custom/vim-test")
 
