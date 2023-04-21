@@ -30,12 +30,13 @@ local M = {
   ["vim-test/vim-test"] = {},
 
   ["neovim/nvim-lspconfig"] = {
-    override_options = {
-      config = function()
-        require "plugins.configs.lspconfig"
-        require "custom.configs.lspconfig"
-      end,
-    }
+    -- override_options = {
+    --   config = function()
+    --     require "plugins.configs.lspconfig"
+    --     require "custom.configs.lspconfig"
+    --     vim.notify("tescht")
+    --   end,
+    -- }
   },
 }
 
