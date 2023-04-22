@@ -16,10 +16,13 @@ M.opts = {
     "ruby",
   },
   indent = {
-    enable = true,
+    enable = false,
     -- disable = {
     --   "python"
     -- },
+  },
+  endwise = {
+    enable = true,
   },
 }
 

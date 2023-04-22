@@ -31,16 +31,18 @@ local plugins = {
     "nvim-treesitter/nvim-treesitter",
     opts = treesitter.opts,
     lazy = false,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    lazy = false,
-  },
-  {
-    "RRethy/nvim-treesitter-endwise",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    lazy = false,
+    dependencies = {
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        lazy = false,
+      },
+      {
+        "RRethy/nvim-treesitter-endwise",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        lazy = false,
+      },
+    },
   },
 
   {
