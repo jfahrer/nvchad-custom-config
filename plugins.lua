@@ -1,6 +1,6 @@
-local treesitter = require("custom.configs.treesitter")
-local telescope = require("custom.configs.telescope")
-local mason = require("custom.configs.mason")
+local treesitter = require "custom.configs.treesitter"
+local telescope = require "custom.configs.telescope"
+local mason = require "custom.configs.mason"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -18,58 +18,60 @@ local plugins = {
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end,
-    lazy = false
+    lazy = false,
   },
 
   {
     "williamboman/mason.nvim",
     opts = mason.opts,
-    lazy = false
+    lazy = false,
   },
 
   {
     "nvim-treesitter/nvim-treesitter",
     opts = treesitter.opts,
-    lazy = false
+    lazy = false,
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    dependencies = { "nvim-treesitter/nvim-treesitter"},
-    lazy = false
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    lazy = false,
   },
   {
     "RRethy/nvim-treesitter-endwise",
-    dependencies = { "nvim-treesitter/nvim-treesitter"},
-    lazy = false
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    lazy = false,
   },
 
   {
     "nvim-tree/nvim-tree.lua",
-    enabled = false
+    enabled = false,
   },
 
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
-    lazy = false
+    lazy = false,
   },
   {
     "nvim-telescope/telescope.nvim",
     opts = telescope.opts,
-    lazy = false
+    lazy = false,
   },
 
-  { "echasnovski/mini.bracketed",
+  {
+    "echasnovski/mini.bracketed",
     config = function()
       require("mini.bracketed").setup()
     end,
-    lazy = false
+    lazy = false,
   },
-  { "kylechui/nvim-surround",
+  {
+    "kylechui/nvim-surround",
     config = function()
       require("nvim-surround").setup()
     end,
-    lazy = false
+    lazy = false,
   },
 
   {
@@ -77,7 +79,7 @@ local plugins = {
     config = function()
       require("Navigator").setup()
     end,
-    lazy = false
+    lazy = false,
   },
 
   {
@@ -85,7 +87,7 @@ local plugins = {
     config = function()
       require("oil").setup()
     end,
-    lazy = false
+    lazy = false,
   },
 
   { "tpope/vim-projectionist", lazy = false },
