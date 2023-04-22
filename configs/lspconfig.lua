@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- for default config simply add a server to the table
-local servers = { "html", "cssls", "solargraph", "standardrb" }
+local servers = { "html", "cssls", "bashls" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -13,4 +13,13 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- lspconfig.solargraph.setup { ... }
+lspconfig.solargraph.setup {
+  settings = {
+    solargraph = {
+      diagnostics = false,
+    },
+  },
+  init_options = {
+    formatting = false,
+  },
+}

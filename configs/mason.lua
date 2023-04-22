@@ -16,10 +16,13 @@ M.opts = {
     "standardrb",
 
     -- shell
-    "bashls",
+    "bash-language-server",
 
     -- go
     "gopls",
+
+    -- ansible
+    "ansible-language-server",
   },
 }
 
