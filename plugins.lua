@@ -1,9 +1,15 @@
+local cmpconfig = require "custom.configs.cmp"
 local treesitter = require "custom.configs.treesitter"
 local telescope = require "custom.configs.telescope"
 local mason = require "custom.configs.mason"
 
 ---@type NvPluginSpec[]
 local plugins = {
+  {
+    "hrsh7th/nvim-cmp",
+    opts = cmpconfig.opts,
+    lazy = false,
+  },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
