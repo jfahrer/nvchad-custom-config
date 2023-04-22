@@ -93,7 +93,7 @@ M.buffer_and_window_management = {
     ["<leader>o"] = {
       function()
         vim.cmd "only"
-        require("nvchad_ui.tabufline").closeOtherBufs()
+        vim.cmd "%bd|e#"
         vim.cmd "AV"
       end,
       "Vertical split for test and impl",
@@ -101,8 +101,8 @@ M.buffer_and_window_management = {
 
     ["<leader>O"] = {
       function()
+        vim.cmd "%bd|e#"
         vim.cmd "only"
-        require("nvchad_ui.tabufline").closeOtherBufs()
       end,
       "Close all other buffers and windows",
     },
