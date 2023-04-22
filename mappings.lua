@@ -175,7 +175,7 @@ M.buffer_and_window_management = {
 M.test = {
   n = {
     [";s"] = {
-      "<CMD> TestAll",
+      "<CMD> TestSuite<CR>",
       "All suite",
     },
     [";f"] = {
