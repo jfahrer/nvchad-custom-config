@@ -1,7 +1,7 @@
 local M = {}
 
 M.opts = {
-  extensions_list = { "fzf", "terms" }
+  extensions_list = { "fzf", "terms" },
 }
 
 return M

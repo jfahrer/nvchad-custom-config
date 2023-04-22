@@ -13,7 +13,7 @@ M.opts = {
     "markdown",
     "markdown_inline",
     "go",
-    "ruby"
+    "ruby",
   },
   indent = {
     enable = true,
