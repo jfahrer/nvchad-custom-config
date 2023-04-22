@@ -164,6 +164,11 @@ M.buffer_and_window_management = {
     ["<C-j>"] = { "<CMD>NavigatorDown<CR>", "window down" },
     ["<C-k>"] = { "<CMD>NavigatorUp<CR>", "window up" },
     ["<C-l>"] = { "<CMD>NavigatorRight<CR>", "window right" },
+
+    ["<C-f>"] = { "<C-\\><C-N><C-f>", "Scroll down" },
+    ["<C-b>"] = { "<C-\\><C-N><C-b>", "Scroll up" },
+    ["<C-e>"] = { "<C-\\><C-N><C-b>", "Move down" },
+    ["<C-y>"] = { "<C-\\><C-N><C-f>", "Move up" },
   },
 }
 
