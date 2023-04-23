@@ -18,5 +18,6 @@ M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"
 
 require "custom.vim-test"
+require "custom.copilot"
 
 return M
