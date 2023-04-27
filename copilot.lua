@@ -3,7 +3,7 @@ vim.g.copilot_filetypes = { xml = false }
 -- vim.g.copilot_filetypes = { ["*"] = false, python = true }
 
 vim.g.copilot_no_tab_map = true
-vim.keymap.set("i", "<C-a>", "copilot#Accept('<CR>')", { expr = true, silent = true })
+vim.keymap.set("i", "<M-y>", "copilot#Accept('')", { expr = true, silent = true, replace_keycodes = false })
 
 -- <C-]>                   Dismiss the current suggestion.
 -- <Plug>(copilot-dismiss)
