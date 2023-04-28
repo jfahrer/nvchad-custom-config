@@ -99,8 +99,8 @@ local plugins = {
   },
 
   { "tpope/vim-projectionist", lazy = false },
-  { "rhysd/clever-f.vim", lazy = false },
-  { "vim-test/vim-test", lazy = false },
+  { "rhysd/clever-f.vim",      lazy = false },
+  { "vim-test/vim-test",       lazy = false },
 
   {
     "github/copilot.vim",

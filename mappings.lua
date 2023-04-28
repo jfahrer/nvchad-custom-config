@@ -49,10 +49,8 @@ M.general = {
   n = {
     ["s"] = { "<CMD> write<CR>", "Write current buffer" },
     ["S"] = { "<CMD> wall<CR>", "Write all buffers" },
-
     ["<leader>q"] = { "q", "Record macro", opts = { nowait = true } },
     ["<leader>Q"] = { "qqqqq", "Record recursive macro in q", opts = { nowait = true } },
-
     ["<C-q>"] = {
       function()
         vim.cmd "copen"
@@ -64,7 +62,6 @@ M.general = {
       end,
       "Toggle quickfix",
     },
-
     ["<C-c>"] = { "<CMD>nohlsearch<CR>", "Clear search highlight" },
   },
 }
@@ -75,9 +72,7 @@ M.buffer_and_window_management = {
     ["<C-j>"] = { "<CMD>NavigatorDown<CR>", "window down" },
     ["<C-k>"] = { "<CMD>NavigatorUp<CR>", "window up" },
     ["<C-l>"] = { "<CMD>NavigatorRight<CR>", "window right" },
-
     ["<leader>j"] = { "<C-w>j", "Jump to next window" },
-
     ["q"] = {
       function()
         if vim.fn.reg_recording() == "" then
@@ -89,7 +84,6 @@ M.buffer_and_window_management = {
       "close buffer",
     },
     ["Q"] = { "<CMD> close<CR>", "Close window" },
-
     ["<leader>o"] = {
       function()
         vim.cmd "only"
@@ -98,7 +92,6 @@ M.buffer_and_window_management = {
       end,
       "Vertical split for test and impl",
     },
-
     ["<leader>O"] = {
       function()
         vim.cmd "%bd|e#"
@@ -106,7 +99,6 @@ M.buffer_and_window_management = {
       end,
       "Close all other buffers and windows",
     },
-
     -- [";v"] = {
     --   function()
     --     vim.cmd("vsplit")
@@ -126,7 +118,6 @@ M.buffer_and_window_management = {
       end,
       "Alternate file",
     },
-
     -- Resizing of windows
     ["<Leader><Up>"] = {
       function()
@@ -155,7 +146,6 @@ M.buffer_and_window_management = {
     ["<leader>z"] = { "<C-w>_<C-w>|", "Zoom window" },
     ["<leader>Z"] = { "<C-w>=", "Balance windows" },
   },
-
   t = {
     ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" },
     ["jk"] = { termcodes "<C-\\><C-N>", "escape terminal mode" },
@@ -164,7 +154,6 @@ M.buffer_and_window_management = {
     ["<C-j>"] = { "<CMD>NavigatorDown<CR>", "window down" },
     ["<C-k>"] = { "<CMD>NavigatorUp<CR>", "window up" },
     ["<C-l>"] = { "<CMD>NavigatorRight<CR>", "window right" },
-
     ["<C-f>"] = { "<C-\\><C-N><C-f>", "Scroll down" },
     ["<C-b>"] = { "<C-\\><C-N><C-b>", "Scroll up" },
     ["<C-e>"] = { "<C-\\><C-N><C-b>", "Move down" },
@@ -174,7 +163,7 @@ M.buffer_and_window_management = {
 
 M.test = {
   n = {
-    [";s"] = {
+    [";S"] = {
       "<CMD> TestSuite<CR>",
       "All suite",
     },
@@ -182,7 +171,7 @@ M.test = {
       "<CMD> TestFile<CR>",
       "Test file",
     },
-    [";d"] = {
+    [";s"] = {
       "<CMD> TestNearest<CR>",
       "Test nearest to curser",
     },
@@ -263,76 +252,66 @@ M.copying = {
 
 M.lsp = {
   n = {
-    ["<leader>lD"] = {
+    [";D"] = {
       function()
         vim.lsp.buf.declaration()
       end,
       "lsp declaration",
     },
-
-    ["<leader>ld"] = {
+    [";d"] = {
       function()
         vim.lsp.buf.definition()
       end,
       "lsp definition",
     },
-
-    ["<leader>lh"] = {
-      function()
-        vim.lsp.buf.hover()
-      end,
-      "lsp hover",
-    },
-
-    ["<leader>li"] = {
+    [";i"] = {
       function()
         vim.lsp.buf.implementation()
       end,
       "lsp implementation",
     },
-
-    ["<leader>ls"] = {
-      function()
-        vim.lsp.buf.signature_help()
-      end,
-      "lsp signature_help",
-    },
-
-    ["<leader>lt"] = {
-      function()
-        vim.lsp.buf.type_definition()
-      end,
-      "lsp definition type",
-    },
-
-    ["<leader>lR"] = {
-      function()
-        require("nvchad_ui.renamer").open()
-      end,
-      "lsp rename",
-    },
-
-    ["<leader>la"] = {
-      function()
-        vim.lsp.buf.code_action()
-      end,
-      "lsp code_action",
-    },
-
-    ["<leader>lr"] = {
+    [";r"] = {
       function()
         vim.lsp.buf.references()
       end,
       "lsp references",
     },
-
-    ["<leader>lf"] = {
+    [";H"] = {
       function()
-        vim.diagnostic.open_float { border = "rounded" }
+        vim.lsp.buf.hover()
       end,
-      "floating diagnostic",
+      "lsp hover",
     },
-
+    [";h"] = {
+      function()
+        vim.lsp.buf.signature_help()
+      end,
+      "lsp signature_help",
+    },
+    [";t"] = {
+      function()
+        vim.lsp.buf.type_definition()
+      end,
+      "lsp definition type",
+    },
+    [";R"] = {
+      function()
+        require("nvchad_ui.renamer").open()
+      end,
+      "lsp rename",
+    },
+    [";a"] = {
+      function()
+        vim.lsp.buf.code_action()
+      end,
+      "lsp code_action",
+    },
+    -- ["<leader>lf"] = {
+    --   function()
+    --     vim.diagnostic.open_float { border = "rounded" }
+    --   end,
+    --   "floating diagnostic",
+    -- },
     -- ["[d"] = {
     --   function()
     --     vim.diagnostic.goto_prev()
