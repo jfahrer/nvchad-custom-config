@@ -99,15 +99,24 @@ local plugins = {
   },
 
   { "tpope/vim-projectionist", lazy = false },
-  { "rhysd/clever-f.vim",      lazy = false },
-  { "vim-test/vim-test",       lazy = false },
+  { "rhysd/clever-f.vim", lazy = false },
+  { "vim-test/vim-test", lazy = false },
 
   {
     "github/copilot.vim",
     lazy = false,
-    -- config = function()
-    --   require("copilot").setup {}
-    -- end,
+  },
+  {
+    "scalameta/nvim-metals",
+    as = "metals",
+    lazy = false,
+    config = function()
+      require "custom.configs.vim-metals"
+    end,
+    dependencies = {
+      { "nvim-lua/plenary.nvim", lazy = false },
+      { "mfussenegger/nvim-dap", lazy = false },
+    },
   },
 }
 
