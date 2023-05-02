@@ -276,13 +276,13 @@ M.lsp = {
       end,
       "lsp references",
     },
-    [";H"] = {
+    [";h"] = {
       function()
         vim.lsp.buf.hover()
       end,
       "lsp hover",
     },
-    [";h"] = {
+    [";H"] = {
       function()
         vim.lsp.buf.signature_help()
       end,
@@ -300,11 +300,17 @@ M.lsp = {
       end,
       "lsp rename",
     },
-    [";a"] = {
+    [";ca"] = {
       function()
         vim.lsp.buf.code_action()
       end,
       "lsp code_action",
+    },
+    [";cl"] = {
+      function()
+        vim.lsp.codelens.run()
+      end,
+      "lsp code_lens",
     },
     -- ["<leader>lf"] = {
     --   function()
