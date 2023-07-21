@@ -16,12 +16,15 @@ M.opts = {
     "ruby",
   },
   indent = {
-    enable = false,
+    enable = true,
     -- disable = {
     --   "python"
     -- },
   },
   endwise = {
+    enable = true,
+  },
+  matchup = {
     enable = true,
   },
 }

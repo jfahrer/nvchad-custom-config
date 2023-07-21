@@ -48,6 +48,11 @@ local plugins = {
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         lazy = false,
       },
+      {
+        "andymass/vim-matchup",
+        setup = function() end,
+        lazy = false,
+      },
     },
   },
 
