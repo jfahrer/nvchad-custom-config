@@ -35,6 +35,7 @@ M.disabled = {
     ["<leader>wa"] = "",
     ["<leader>wl"] = "",
     ["<leader>wr"] = "",
+    ["<leader>gb"] = "",
     ["<C-c>"] = "",
     ["<C-s>"] = "",
     ["]c"] = "",
@@ -204,6 +205,8 @@ M.bracketed = {
     ["] "] = { "m'o<ESC>`'", "Add empty line above" },
     ["[e"] = { "<CMD> cnewer<CR>" },
     ["]e"] = { "<CMD> colder<CR>" },
+    ["[g"] = { "<CMD> Gitsigns next_hunk<CR>" },
+    ["]g"] = { "<CMD> Gitsign prev_hunk<CR>" },
   },
 }
 
@@ -250,6 +253,32 @@ M.copying = {
   },
 }
 
+M.git = {
+  n = {
+    ["<leader>gb"] = {
+      function()
+        require("gitsigns").blame_line()
+      end,
+      "Git blame line",
+    },
+    ["<leader>gB"] = { "<cmd> Git blame <CR>", "Git blame" },
+    ["<leader>gr"] = { "<cmd> Gitsigns reset_hunk<CR>", "Git reset hunk" },
+    ["<leader>gs"] = { "<cmd> Gitsigns stage_hunk<CR>", "Git stage hunk" },
+    ["<leader>gu"] = { "<cmd> Gitsigns undo_stage_hunk<CR>", "Git undo stage hunk" },
+    ["<leader>gp"] = { "<cmd> Gitsigns preview_hunk<CR>", "Git preview hunk" },
+  },
+  x = {
+    ["ih"] = {
+      ":<C-u>Gitsigns select_hunk<CR>",
+    },
+  },
+  o = {
+    ["ih"] = {
+      "<cmd> Gitsigns select_hunk<CR>",
+    },
+  },
+}
+
 M.lsp = {
   n = {
     [";D"] = {
@@ -258,6 +287,7 @@ M.lsp = {
       end,
       "lsp declaration",
     },
+
     [";d"] = {
       function()
         vim.lsp.buf.definition()

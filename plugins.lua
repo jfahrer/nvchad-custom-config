@@ -102,6 +102,8 @@ local plugins = {
   { "rhysd/clever-f.vim", lazy = false },
   { "vim-test/vim-test", lazy = false },
 
+  { "tpope/vim-fugitive", lazy = false },
+
   {
     "github/copilot.vim",
     lazy = false,
