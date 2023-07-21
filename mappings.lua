@@ -203,10 +203,10 @@ M.bracketed = {
     -- These don't work when repeating or counting
     ["[ "] = { "m'O<ESC>`'", "Add empty line above" },
     ["] "] = { "m'o<ESC>`'", "Add empty line above" },
-    ["[e"] = { "<CMD> cnewer<CR>" },
-    ["]e"] = { "<CMD> colder<CR>" },
-    ["[g"] = { "<CMD> Gitsigns next_hunk<CR>" },
-    ["]g"] = { "<CMD> Gitsign prev_hunk<CR>" },
+    ["[e"] = { "<CMD> cnewer<CR>", "Newer quickfix list" },
+    ["]e"] = { "<CMD> colder<CR>", "Older quickfix list" },
+    ["[g"] = { "<CMD> Gitsigns next_hunk<CR>", "Next git hunk" },
+    ["]g"] = { "<CMD> Gitsign prev_hunk<CR>", "Previous git hunk" },
   },
 }
 
