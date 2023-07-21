@@ -263,9 +263,37 @@ M.git = {
     },
     ["<leader>gB"] = { "<cmd> Git blame <CR>", "Git blame" },
     ["<leader>gr"] = { "<cmd> Gitsigns reset_hunk<CR>", "Git reset hunk" },
+    ["<leader>gR"] = { "<cmd> Git reset<CR>", "Git reset hunk" },
     ["<leader>gs"] = { "<cmd> Gitsigns stage_hunk<CR>", "Git stage hunk" },
+    ["<leader>gS"] = { "<cmd> Gitsigns stage_buffer<CR>", "Git stage buffer" },
     ["<leader>gu"] = { "<cmd> Gitsigns undo_stage_hunk<CR>", "Git undo stage hunk" },
     ["<leader>gp"] = { "<cmd> Gitsigns preview_hunk<CR>", "Git preview hunk" },
+    ["<leader>gd"] = {
+      function()
+        require("gitsigns").diffthis()
+      end,
+      "Git diff buffer",
+    },
+    ["<leader>gD"] = {
+      function()
+        require("gitsigns").diffthis "~1"
+      end,
+      "Git diff buffer to last commit",
+    },
+  },
+  v = {
+    ["<leader>gr"] = {
+      function()
+        require("gitsigns").reset_hunk { vim.fn.line ".", vim.fn.line "v" }
+      end,
+      "Git reset hunk",
+    },
+    ["<leader>gs"] = {
+      function()
+        require("gitsigns").stage_hunk { vim.fn.line ".", vim.fn.line "v" }
+      end,
+      "Git stage hunk",
+    },
   },
   x = {
     ["ih"] = {
