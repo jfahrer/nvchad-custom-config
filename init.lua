@@ -9,3 +9,6 @@
 vim.opt.mouse = ""
 vim.opt.clipboard = ""
 vim.opt.relativenumber = true
+vim.opt.foldlevel = 8
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
