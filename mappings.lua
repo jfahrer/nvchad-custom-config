@@ -180,6 +180,10 @@ M.test = {
       "<CMD> TestLast<CR>",
       "Re-run last test",
     },
+    [";<BS>"] = {
+      "<CMD> TestLast<CR>",
+      "Re-run last test",
+    },
     [";g"] = {
       "<CMD> TestVisit<CR>",
       "Visit last run test",

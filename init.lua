@@ -12,3 +12,4 @@ vim.opt.relativenumber = true
 vim.opt.foldlevel = 8
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.api.nvim_set_keymap("n", "<BS>", ";", { noremap = false })
