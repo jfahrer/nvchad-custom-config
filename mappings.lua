@@ -88,12 +88,17 @@ M.buffer_and_window_management = {
     ["<leader>o"] = {
       function()
         vim.cmd "only"
-        vim.cmd "%bd|e#"
         vim.cmd "AV"
       end,
       "Vertical split for test and impl",
     },
     ["<leader>O"] = {
+      function()
+        vim.cmd "only"
+      end,
+      "Close all other windows",
+    },
+    ["<leader>B"] = {
       function()
         vim.cmd "%bd|e#"
         vim.cmd "only"
