@@ -14,6 +14,7 @@ M.opts = {
     "markdown_inline",
     "go",
     "ruby",
+    "scala",
   },
   indent = {
     enable = true,
