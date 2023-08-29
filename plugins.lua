@@ -60,9 +60,13 @@ local plugins = {
     "nvim-tree/nvim-tree.lua",
     enabled = false,
   },
-
   {
     "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
+    lazy = false,
+  },
+  {
+    "nvim-telescope/telescope-live-grep-args.nvim",
     build = "make",
     lazy = false,
   },
