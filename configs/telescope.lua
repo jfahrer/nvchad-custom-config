@@ -8,11 +8,11 @@ M.opts = {
       -- define mappings, e.g.
       mappings = { -- extend mappings
         i = {
-          ["<C-k>"] = function()
-            require("telescope-live-grep-args.actions").quote_prompt()
+          ["<C-k>"] = function(prompt_bufnr)
+            require("telescope-live-grep-args.actions").quote_prompt()(prompt_bufnr)
           end,
-          ["<C-i>"] = function()
-            require("telescope-live-grep-args.actions").quote_prompt { postfix = " --iglob " }
+          ["<C-i>"] = function(prompt_bufnr)
+            require("telescope-live-grep-args.actions").quote_prompt { postfix = " --iglob " }(prompt_bufnr)
           end,
         },
       },
