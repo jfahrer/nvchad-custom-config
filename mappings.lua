@@ -100,7 +100,7 @@ M.buffer_and_window_management = {
     },
     ["<leader>B"] = {
       function()
-        vim.cmd "%bd|e#"
+        vim.cmd "%bd|e#|bd#"
         vim.cmd "only"
       end,
       "Close all other buffers and windows",

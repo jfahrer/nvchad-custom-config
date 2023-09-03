@@ -17,6 +17,11 @@ local sources = {
   b.diagnostics.standardrb,
   b.formatting.standardrb,
   b.formatting.erb_lint,
+
+  -- Go
+  b.formatting.gofmt,
+  b.formatting.goimports_reviser,
+  b.formatting.golines,
 }
 
 local async_formatting = function(bufnr)
