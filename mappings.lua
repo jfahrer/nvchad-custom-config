@@ -185,13 +185,21 @@ M.test = {
       "<CMD> TestLast<CR>",
       "Re-run last test",
     },
-    [";<BS>"] = {
+    [";<BS>"] = { -- Remapped <BS> to ; for Miryoki layout
       "<CMD> TestLast<CR>",
       "Re-run last test",
     },
     [";g"] = {
       "<CMD> TestVisit<CR>",
       "Visit last run test",
+    },
+    [";a"] = {
+      "<CMD> VtrAttachToPane<CR>",
+      "Attach runner to pane",
+    },
+    [";r"] = {
+      "<CMD> VtrFocusRunner<CR>",
+      "Focus test runner",
     },
   },
 }

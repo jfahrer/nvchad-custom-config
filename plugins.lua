@@ -98,6 +98,10 @@ local plugins = {
     end,
     lazy = false,
   },
+  {
+    "christoomey/vim-tmux-runner",
+    lazy = false,
+  },
 
   {
     "stevearc/oil.nvim",
