@@ -239,6 +239,9 @@ M.telescope = {
       "live grep current word",
     },
     ["<leader>fk"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
+    ["<leader>fs"] = { "<cmd> Telescope search_history <CR>", "search history" },
+    ["<leader>fq"] = { "<cmd> Telescope quickfixhistory <CR>", "quickfix history" },
+    ["<leader>fc"] = { "<cmd> Telescope search_history <CR>", "command history" },
   },
 }
 
