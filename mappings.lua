@@ -77,7 +77,7 @@ M.buffer_and_window_management = {
     ["q"] = {
       function()
         if vim.fn.reg_recording() == "" then
-          require("nvchad_ui.tabufline").close_buffer()
+          require("nvchad.tabufline").close_buffer()
         else
           vim.cmd "normal 1 q"
         end
