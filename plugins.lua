@@ -2,6 +2,7 @@ local cmpconfig = require "custom.configs.cmp"
 local treesitter = require "custom.configs.treesitter"
 local telescope = require "custom.configs.telescope"
 local mason = require "custom.configs.mason"
+local obsidian = require "custom.configs.obsidian"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -144,6 +145,16 @@ local plugins = {
     config = function()
       require "custom.configs.gopher"
     end,
+  },
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*", -- recommended, use latest release instead of latest commit
+    lazy = false,
+    ft = "markdown",
+    dependencies = {
+      { "nvim-lua/plenary.nvim", lazy = false },
+    },
+    opts = obsidian.opts,
   },
 }
 
