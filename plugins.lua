@@ -134,18 +134,18 @@ local plugins = {
       { "mfussenegger/nvim-dap", lazy = false },
     },
   },
-  {
-    "olexsmir/gopher.nvim",
-    lazy = false,
-    dependencies = { -- dependencies
-      { "nvim-lua/plenary.nvim", lazy = false },
-      { "mfussenegger/nvim-dap", lazy = false },
-      { "nvim-treesitter/nvim-treesitter", lazy = false },
-    },
-    config = function()
-      require "custom.configs.gopher"
-    end,
-  },
+  -- {
+  --   "olexsmir/gopher.nvim",
+  --   lazy = false,
+  --   dependencies = { -- dependencies
+  --     { "nvim-lua/plenary.nvim", lazy = false },
+  --     { "mfussenegger/nvim-dap", lazy = false },
+  --     { "nvim-treesitter/nvim-treesitter", lazy = false },
+  --   },
+  --   config = function()
+  --     require "custom.configs.gopher"
+  --   end,
+  -- },
   {
     "epwalsh/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
