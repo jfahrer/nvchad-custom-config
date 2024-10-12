@@ -151,6 +151,7 @@ M.buffer_and_window_management = {
     },
     ["<leader>z"] = { "<C-w>_<C-w>|", "Zoom window" },
     ["<leader>Z"] = { "<C-w>=", "Balance windows" },
+    ["<leader>T"] = { "<CMD>e TODO.md<CR>", "Open TODO.md" },
   },
   t = {
     ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" },
@@ -336,7 +337,6 @@ M.lsp = {
       end,
       "lsp declaration",
     },
-
     [";d"] = {
       function()
         vim.lsp.buf.definition()
