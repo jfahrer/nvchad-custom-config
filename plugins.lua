@@ -11,6 +11,7 @@ local plugins = {
     opts = cmpconfig.opts,
     lazy = false,
   },
+
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -119,9 +120,29 @@ local plugins = {
   { "tpope/vim-fugitive", lazy = false },
 
   {
-    "github/copilot.vim",
+    "zbirenbaum/copilot.lua",
     lazy = false,
+    config = function()
+      require("copilot").setup({})
+    end,
   },
+
+  {
+    "yetone/avante.nvim",
+    lazy = false,
+    opts = {
+      provider = "copilot",
+      providers = {
+        copilot = {}
+      }
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "zbirenbaum/copilot.lua",
+    }
+  },
+
   {
     "scalameta/nvim-metals",
     as = "metals",
